@@ -12,7 +12,15 @@
     <nav>
         <div class="menu">
             <a href="/">STOCK</a>
-            <a href="">SIGNIN</a>
+            @if (Cookie::get('_uid'))
+                @if (Cookie::get('_posid')==1)
+                    <a href="/admin/manage_emp">Manage-Emp</a>
+                @endif
+                <a href="{{url('/emp/edit'                                                                                                                                                                              )}}">EDIT</a>
+                <a href="/signout">SIGNOUT</a>
+            @else
+                <a href="/signin">SIGNIN</a>
+            @endif
         </div>
     </nav>
     @yield('content')
