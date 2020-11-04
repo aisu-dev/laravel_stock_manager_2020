@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('page.auth.signin');
-});
-//test
+Route::get('/', 'StocksController@index');
+
+Route::get('/signin', 'EmployeesController@signin_page');
+Route::get('/signup', 'EmployeesController@signup_page');
+Route::post('/auth/signin', 'EmployeesController@signin');
+Route::post('/auth/signup', 'EmployeesController@signup');

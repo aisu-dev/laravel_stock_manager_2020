@@ -4,7 +4,7 @@
 
     <div class="container mt-5 pt-5">
         <h1>Sign In</h1>
-        {!! Form::open(['url'=>'/auth/signin/submit']) !!}
+        {!! Form::open(['url'=>'/auth/signin','method'=>'POST']) !!}
             <div class="form-group">
                 {!! Form::label('uname', 'Username:', ['class'=>'']) !!}
                 {!! Form::text('uname', '', ['class'=>'form-control']) !!}
