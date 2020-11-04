@@ -12,8 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('product', 'ProductsController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-//test
+Route::get('product/create', 'ProductsController@createform');
+Route::post('product/create', 'ProductsController@create');
+
+Route::get('product/edit/{id}', 'ProductsController@show');
+Route::post('product/edit{id}', 'ProductsController@update');
+
+
+
