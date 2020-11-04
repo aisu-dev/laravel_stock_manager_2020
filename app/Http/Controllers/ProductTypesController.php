@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\positios;
+use App\product_types;
 use Illuminate\Http\Request;
 
-class PositiosController extends Controller
+class ProductTypesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PositiosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\positios  $positios
+     * @param  \App\product_types  $product_types
      * @return \Illuminate\Http\Response
      */
-    public function show(positios $positios)
+    public function show(product_types $product_types)
     {
         //
     }
@@ -52,10 +52,10 @@ class PositiosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\positios  $positios
+     * @param  \App\product_types  $product_types
      * @return \Illuminate\Http\Response
      */
-    public function edit(positios $positios)
+    public function edit(product_types $product_types)
     {
         //
     }
@@ -64,10 +64,10 @@ class PositiosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\positios  $positios
+     * @param  \App\product_types  $product_types
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, positios $positios)
+    public function update(Request $request, product_types $product_types)
     {
         //
     }
@@ -75,10 +75,10 @@ class PositiosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\positios  $positios
+     * @param  \App\product_types  $product_types
      * @return \Illuminate\Http\Response
      */
-    public function destroy(positios $positios)
+    public function destroy(product_types $product_types)
     {
         //
     }

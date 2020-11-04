@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PositiosSeeder extends Seeder
+class PositionsSeeder extends Seeder
 {
     /**
      * Run the database seeds.

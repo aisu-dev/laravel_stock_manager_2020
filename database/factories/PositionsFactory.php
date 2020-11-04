@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\positios;
+use App\positions;
 use Faker\Generator as Faker;
 
-$factory->define(positios::class, function (Faker $faker) {
+$factory->define(positions::class, function (Faker $faker) {
     return [
         //
     ];
