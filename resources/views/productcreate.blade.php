@@ -22,7 +22,9 @@
                 {!!Form::label('Product price')!!}</br>
                 {!!Form::text('pprice')!!}
                 {!!Form::label('  THB')!!}</br>
-                    
+            
+                {!!Form::label('Product amount')!!}</br>
+                {!!Form::number('pamount')!!}</br>
                 {!!Form::submit('Submit!')!!}
             </div>
         {!! Form::close() !!}

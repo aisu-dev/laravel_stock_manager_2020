@@ -27,6 +27,9 @@
                     {!!Form::text('pprice',$products->prod_price)!!}
                     {!!Form::label('  THB')!!}</br>
 
+                    {!!Form::label('Product price')!!}</br>
+                    {!!Form::number('pamount',$products->prod_amount)!!}</br>
+
                     {!!Form::submit('Submit!')!!}
                 </div>
                 {!! Form::close() !!}

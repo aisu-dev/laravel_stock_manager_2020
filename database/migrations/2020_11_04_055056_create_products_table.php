@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->foreign('prod_type')->references('id')->on('product_types');
             $table->string('prod_descp');
             $table->float('prod_price');
+            $table->Integer('prod_amount');
             $table->timestamps();
         });
     }
