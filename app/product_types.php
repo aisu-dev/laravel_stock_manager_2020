@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class positios extends Model
+class product_types extends Model
 {
     //
 }

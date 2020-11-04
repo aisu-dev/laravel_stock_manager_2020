@@ -3,83 +3,77 @@
 namespace App\Http\Controllers;
 
 use App\employees;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class EmployeesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function signin_page(Request $request){
+        if($request->cookie('_uid')){
+            return redirect('/');
+        }
+        return view('page.auth.signin');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function signup_page(Request $request){
+
+        if($request->cookie('_uid')){
+            $acc = employees::find($request->cookie('_uid'));
+            if($acc->pos_id==1){
+                return view('page.auth.signup');
+            }
+            return redirect('/');
+        }
+        return redirect('/');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function signin(Request $request){
+        $request->validate([
+            'uname'=>'required',
+            'pass'=>'required'
+        ]);
+        $resp = employees::where([['emp_name',$request->uname],['emp_password',$request->pass]])->first();
+        if($resp){
+            $response = new Response();
+            $response->withCookie(cookie('_uid', $resp->id, 60*24));
+            $response->header('Location',url('/'));
+            return $response;
+        }else{
+            return redirect('/signin')->withCookie($request->cookie('_uid'));
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\employees  $employees
-     * @return \Illuminate\Http\Response
-     */
-    public function show(employees $employees)
-    {
-        //
+    public function signup(Request $request){
+        $request->validate([
+            'uname'=>'required',
+            'pass'=>'required',
+            'address'=>'required',
+            'phone'=>'required|max:10',
+            'dob'=>'required'
+        ]);
+        employees::create([
+            'emp_name'=>$request->uname,
+            'emp_password'=>$request->pass,
+            'emp_address'=>$request->address,
+            'emp_phone'=>$request->phone,
+            'emp_dob'=> $request->dob,
+            'pos_id'=>2,
+        ]);
+        return redirect('/');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\employees  $employees
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(employees $employees)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\employees  $employees
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, employees $employees)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\employees  $employees
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(employees $employees)
-    {
-        //
+    public function AutomaticCreateBasedAdmin(){
+        $resp = employees::find(1);
+        if(!$resp){
+            employees::create([
+                'emp_name'=>'admin',
+                'emp_password'=>'test',
+                'emp_address'=>'abc',
+                'emp_phone'=>'0000000000',
+                'emp_dob'=> new DateTime(),
+                'pos_id'=>1,
+            ]);
+        }
     }
 }
