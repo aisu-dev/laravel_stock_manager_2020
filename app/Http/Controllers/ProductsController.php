@@ -6,6 +6,7 @@ use DB;
 use Carbon\Carbon;
 use App\products;
 use App\stocks;
+use App\employees;
 
 use Illuminate\Http\Request;
 
@@ -34,19 +35,34 @@ class ProductsController extends Controller
         $products->prod_descp = $request->pdes;
         $products->prod_price = $request->pprice;
         $products->prod_amount = $request->pamount;
-
         $products->save();
-
         return redirect()->to('/')->send()->with('alert', 'Product add Successfully!');
     }
     //Creating product form
-    public function createform(){
-        return view('productcreate');
+    public function createform(Request $request){
+        if($request->cookie('_uid')){
+            $acc = employees::find($request->cookie('_uid'));
+            if($acc->pos_id==1){
+                return view('productcreate');
+            }
+            return redirect('/');
+        }
+        return redirect('/');
     }
     //Show product that have selected
-    public function show($id) {
-        $product = DB::select('select * from products where id = ?',[$id]);
-        return view('productedit',['product'=>$product]);
+    public function show(Request $request,$id) {
+        if($request->cookie('_uid')){
+            $acc = employees::find($request->cookie('_uid'));
+            if($acc->pos_id==1){
+                $product = DB::select('select * from products where id = ?',[$id]);
+                return view('productedit',['product'=>$product]);
+            }
+            return redirect('/');
+        }
+        return redirect('/');
+
+
+        
     }
 
     //Update product by using id
