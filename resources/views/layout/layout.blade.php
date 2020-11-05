@@ -10,20 +10,29 @@
 </head>
 <body>
     <nav>
-        <div class="menu">
-            <a href="/">STOCK</a>
-            @if (Cookie::get('_uid'))
-                @if (Cookie::get('_posid')==1)
-                    <a href="/admin/manage_emp">Manage-Emp</a>
-                @endif
-                <a href="{{url('/emp/edit'                                                                                                                                                                              )}}">EDIT</a>
-                <a href="/signout">SIGNOUT</a>
-            @else
-                <a href="/signin">SIGNIN</a>
-            @endif
+        <div class="topnav">
+            <nav class="navbar">
+                <ul style="list-style-type: none;">
+                    <a class="navbar-brand" href="/">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Wikisource-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                        Stock management
+                    </a>
+                    <li>
+                        <a href="/">STOCK</a>
+                    </li>
+			        @if (Cookie::get('_uid'))
+                    	@if (Cookie::get('_posid')==1)
+                        	<li ><a href="/admin/manage_emp">Manage-Emp</a></li>
+                     	@endif
+                         <a href="{{url('/emp/edit')}}">EDIT</a>
+                         <li style="margin-left:550px;"><a href="/signout">SIGN OUT</a></li>
+                	@else
+                    	<li style="margin-left:750px;"><a href="/signin">SIGN IN</a></li>
+                	@endif
+                </ul>
+            </nav>
         </div>
     </nav>
-    @yield('content')
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
