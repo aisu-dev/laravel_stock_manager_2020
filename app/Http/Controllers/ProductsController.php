@@ -14,7 +14,10 @@ class ProductsController extends Controller
 {
     //Show all products
     public function index() {
-        
+        app('App\Http\Controllers\PositionsController')->AutomaticCreateDefaultPosition();
+        app('App\Http\Controllers\ProductTypesController')->AutomaticCreateProductType();
+        app('App\Http\Controllers\EmployeesController')->AutomaticCreateBasedAdmin();
+
         $product = DB::select('select * from products');
         return view('index',compact('product',$product));
     }

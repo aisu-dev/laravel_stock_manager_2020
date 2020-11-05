@@ -16,7 +16,7 @@ class PositionsController extends Controller
             ]);
             positions::create([
                 'pos_name'=>'normal',
-                'pos_descp'=>'can update.'
+                'pos_descp'=>'can update'
             ]);
         }
     }
