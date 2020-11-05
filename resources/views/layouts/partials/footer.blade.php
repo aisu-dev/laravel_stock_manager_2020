@@ -1,7 +1,7 @@
 <footer>
     <div class="container">
         <center>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, distinctio!</p>
+            <p>The contents of this web page are copyright &copy; 1998-2020 SE261. All Rights Reserved.</p>
         </center>
     </div>
 </footer>

@@ -1,29 +1,28 @@
 @extends('layouts.mainlayout')
-
 @section('content')
     <div class="container">
-        <h1>Product page</h1>
-        <h1>Page - Create Product</h1>
+        <!--<h1>Page - Create Product</h1>-->
+        <h1>Adding Product</h1>
         {{-- 'action' =>'ProductsController', --}}
         {!! Form::open(['action' =>'ProductsController@create', 'method' => 'POST']) !!}
             <div class="form-group">
-                {!!Form::label('Product name')!!}</br>
+                <strong>{!!Form::label('Product name: ')!!}</strong>
                 {!!Form::text('pname')!!}</br>
 
-                {!!Form::label('Product image link')!!}</br>
+                <strong>{!!Form::label('Product image link: ')!!}</strong>
                 {{Form::text('pimg')}}</br>
 
-                {!!Form::label('Product type')!!}</br>
+                <strong>{!!Form::label('Product type')!!}</strong>
                 {!!Form::select('type', ['1' => 'Furniture','2' => 'Clothing', '3' => 'Technology'])!!}</br>
 
-                {!!Form::label('Product description')!!}</br>
+                <strong>{!!Form::label('Product description: ')!!}</strong></br>
                 {!!Form::textarea('pdes',null,['style' => 'resize:none'])!!}</br>
 
-                {!!Form::label('Product price')!!}</br>
+                <strong>{!!Form::label('Product price: ')!!}</strong>
                 {!!Form::text('pprice')!!}
                 {!!Form::label('  THB')!!}</br>
-            
-                {!!Form::label('Product amount')!!}</br>
+
+                <strong>{!!Form::label('Product amount: ')!!}</strong>
                 {!!Form::number('pamount')!!}</br>
                 {!!Form::submit('Submit!')!!}
             </div>

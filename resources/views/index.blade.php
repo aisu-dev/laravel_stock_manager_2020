@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="container">
-        <h1>Page - Product Lists</h1>
-        <h2>Table - Product</h2>
+        <h1>Product Lists</h1>
+        {{-- <h2>Table - Product</h2> --}}
         @if(Cookie::get('_posid') == 1)
-            <a class="btn btn-primary" role="button" href="{{url('/product/create')}}" >Add product</a>
+            <a class="btn btn" style="background-color: #7D4F50; color:white; margin-bottom:10px" role="button" href="{{url('/product/create')}}" >Add product</a>
         @endif
         <div class="form-group">
             {!! Form::open(['action' => 'ProductsController@searchbyname','method' => 'GET']) !!}
-                {!!Form::label('Search Product name')!!}</br>
-                {!!Form::text('search')!!}</br>
+                <strong>{!!Form::label('Search Product name')!!}</strong>
+                {!!Form::text('search')!!}
                 {!!Form::submit('Submit!')!!}
             {!! Form::close() !!}
 
@@ -36,14 +36,22 @@
                 <th>Created at</th>
                 <th>Last updated</th>
                 <th>Amount</th>
-                <th></th>
+                @if(Cookie::get('_posid') == 1)
+                        <th>
+                            Action
+                        </th>
+                    @elseif(Cookie::get('_posid') == 2)
+                    <th>
+                        Action
+                    </th>
+                @endif
             </tr>
 
             @if(isset($product))
                 @foreach ($product as $products)
                 <tr>
                     <td>{{ $products->id }}</td>
-                    <td><img src="{{ $products->prod_img }}" width="300px" height="300px"></td>
+                    <td><img src="{{ $products->prod_img }}" width="200px" height="200px"></td>
                     <td>{{ $products->prod_name }}</td>
                     <td>
                         @if($products->prod_type==1)
@@ -52,7 +60,7 @@
                             Clothing
                         @else
                             Technology
-                        @endif    
+                        @endif
 
                     </td>
                     <td>{{ $products->prod_descp }}</td>
@@ -63,20 +71,22 @@
                         @if($products->prod_amount <= 0)
                             out of amount
                         @else
-                            {{$products->prod_amount}}   
+                            {{$products->prod_amount}}
                         @endif
-                 
+
                     </td>
-                    <td>
-                        @if(Cookie::get('_posid') == 1)
-                        <a type="button" class="btn btn-outline-primary" href="product/edit/{{$products->id}}">Edit</a>  
-                        <a type="button" class="btn btn-outline-danger" href="product/delete/{{ $products->id }}">Delete</a>
+                    @if(Cookie::get('_posid') == 1)
+                        <td>
+                            <a type="button" class="btn btn-outline-primary" style="margin-bottom: 5px" href="product/edit/{{$products->id}}">Edit</a>
+                            <a type="button" class="btn btn-outline-danger" href="product/delete/{{ $products->id }}">Delete</a>
+                        </td>
                     @elseif(Cookie::get('_posid') == 2)
-                        <a type="button" class="btn btn-outline-primary" href="product/add/{{$products->id}}" onclick="return confirm('Are you sure?')">+</a>  
-                        <a type="button" class="btn btn-outline-primary" href="product/minus/{{$products->id}}" onclick="return confirm('Are you sure?')">-</a>  
-                    @else
-                    @endif
+                    <td>
+                        <a type="button" class="btn btn-outline-primary" style="margin-bottom: 5px" href="product/add/{{$products->id}}" onclick="return confirm('Are you sure?')">+</a>
+                        <a type="button" class="btn btn-outline-danger" href="product/minus/{{$products->id}}" onclick="return confirm('Are you sure?')">-</a>
                     </td>
+                    @endif
+
                 </tr>
                 @endforeach
             @endif
