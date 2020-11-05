@@ -3,8 +3,8 @@
     @include('layouts.partials.head')
 </head>
 <body>
-
     @include('layouts.partials.nav')
+    @include('sweet::alert')
 
         <div class="content">
 

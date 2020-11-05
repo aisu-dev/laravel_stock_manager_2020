@@ -5,7 +5,7 @@
         <h1>Page - Product Lists</h1>
         <h2>Table - Product</h2>
         @if(Cookie::get('_posid') == 1)
-            <a class="btn btn-primary" role="button" href="{{url('/product/create')}}">Add product</a>
+            <a class="btn btn-primary" role="button" href="{{url('/product/create')}}" >Add product</a>
         @endif
         <div class="form-group">
             {!! Form::open(['action' => 'ProductsController@searchbyname','method' => 'GET']) !!}
@@ -19,8 +19,9 @@
         <script>
             var msg = '{{Session::get('alert')}}';
             var exist = '{{Session::has('alert')}}';
+
             if(exist){
-            alert(msg);
+                swal(msg, "", "success");
             }
         </script>
 
@@ -37,7 +38,7 @@
                 <th>Amount</th>
                 <th></th>
             </tr>
-            
+
             @if(isset($product))
                 @foreach ($product as $products)
                 <tr>
@@ -72,7 +73,6 @@
                         <a type="button" class="btn btn-outline-danger" href="product/delete/{{ $products->id }}">Delete</a>
                     @elseif(Cookie::get('_posid') == 2)
                         <a type="button" class="btn btn-outline-primary" href="product/add/{{$products->id}}" onclick="return confirm('Are you sure?')">+</a>  
-
                         <a type="button" class="btn btn-outline-primary" href="product/minus/{{$products->id}}" onclick="return confirm('Are you sure?')">-</a>  
                     @else
                     @endif

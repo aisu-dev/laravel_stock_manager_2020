@@ -13,6 +13,7 @@ class ProductsController extends Controller
 {
     //Show all products
     public function index() {
+        
         $product = DB::select('select * from products');
         return view('index',compact('product',$product));
     }
@@ -36,7 +37,7 @@ class ProductsController extends Controller
 
         $products->save();
 
-        return redirect()->to('/')->send();
+        return redirect()->to('/')->send()->with('alert', 'Product add Successfully!');
     }
     //Creating product form
     public function createform(){
@@ -59,7 +60,7 @@ class ProductsController extends Controller
 
         $update = Carbon::now()->toDateTimeString();
         DB::update('update products set prod_name = ?,prod_img = ?,prod_type = ?, prod_descp = ?, prod_price = ?,prod_amount = ?, updated_at = ? where id = ?',[$pname,$pimg,$type,$pdes,$pprice,$pamount,$update,$id]);
-        return redirect()->to('/')->send();
+        return redirect()->to('/')->send()->with('alert', 'Update Successfully!');
     }
 
     public function destroy($id) {

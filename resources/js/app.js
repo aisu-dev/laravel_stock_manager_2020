@@ -1,1 +1,2 @@
+require('sweetalert');
 require('./bootstrap');
