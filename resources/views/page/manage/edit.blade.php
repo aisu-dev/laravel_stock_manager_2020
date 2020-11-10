@@ -1,8 +1,8 @@
 @extends('layouts.mainlayout')
-
+@section('title', 'Edit Profile')
 @section('content')
-    <div class="container mt-5 pt-5">
-
+    <div class="container">
+        <h1>Edit Profile</h1>
         {!! Form::open(['url'=>'/emp/edit/store','method'=>'post']) !!}
         {!! Form::hidden('id',$data->id) !!}
         <div class="form-group">

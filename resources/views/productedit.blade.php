@@ -1,5 +1,5 @@
 @extends('layouts.mainlayout')
-
+@section('title', 'Edit Product')
 @section('content')
 <div class="container">
 
@@ -30,7 +30,7 @@
                     <strong>{!!Form::label('Product price: ')!!}</strong>
                     {!!Form::number('pamount',$products->prod_amount)!!}</br>
 
-                    {!!Form::submit('Submit!')!!}
+                    {!!Form::submit('Save')!!}
                 </div>
                 {!! Form::close() !!}
             @endforeach

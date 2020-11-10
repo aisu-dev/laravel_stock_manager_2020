@@ -1,8 +1,9 @@
 @extends('layouts.mainlayout')
+@section('title', 'Add Product')
 @section('content')
     <div class="container">
         <!--<h1>Page - Create Product</h1>-->
-        <h1>Adding Product</h1>
+        <h1>Add Product</h1>
         {{-- 'action' =>'ProductsController', --}}
         {!! Form::open(['action' =>'ProductsController@create', 'method' => 'POST']) !!}
             <div class="form-group">

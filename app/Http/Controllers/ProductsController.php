@@ -39,7 +39,7 @@ class ProductsController extends Controller
         $products->prod_price = $request->pprice;
         $products->prod_amount = $request->pamount;
         $products->save();
-        return redirect()->to('/')->send()->with('alert', 'Product add Successfully!');
+        return redirect()->to('/product')->send()->with('alert', 'Product add Successfully!');
     }
     //Creating product form
     public function createform(Request $request){
@@ -48,9 +48,9 @@ class ProductsController extends Controller
             if($acc->pos_id==1){
                 return view('productcreate');
             }
-            return redirect('/');
+            return redirect('/product');
         }
-        return redirect('/');
+        return redirect('/product');
     }
     //Show product that have selected
     public function show(Request $request,$id) {
@@ -60,12 +60,12 @@ class ProductsController extends Controller
                 $product = DB::select('select * from products where id = ?',[$id]);
                 return view('productedit',['product'=>$product]);
             }
-            return redirect('/');
+            return redirect('/product');
         }
-        return redirect('/');
+        return redirect('/product');
 
 
-        
+
     }
 
     //Update product by using id
@@ -79,7 +79,7 @@ class ProductsController extends Controller
 
         $update = Carbon::now()->toDateTimeString();
         DB::update('update products set prod_name = ?,prod_img = ?,prod_type = ?, prod_descp = ?, prod_price = ?,prod_amount = ?, updated_at = ? where id = ?',[$pname,$pimg,$type,$pdes,$pprice,$pamount,$update,$id]);
-        return redirect()->to('/')->send()->with('alert', 'Update Successfully!');
+        return redirect()->to('/product')->send()->with('alert', 'Update Successfully!');
     }
 
     public function destroy($id) {
@@ -103,7 +103,7 @@ class ProductsController extends Controller
             return redirect()->back() ->with('alert', 'Amount is changed!');
         }else{
             return redirect()->back() ->with('alert', 'This product is already out of amount!');
-            
+
         }
     }
     public function addamount($id){
@@ -112,7 +112,7 @@ class ProductsController extends Controller
 
         DB::update('update products set prod_amount = ?, updated_at = ? where id = ?',[$product[0]->prod_amount+1, $update ,$id]);
         return redirect()->back() ->with('alert', 'Amount is changed!');
-        
+
     }
     //Search product type
     // public function searchbytype($type){

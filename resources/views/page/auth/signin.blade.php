@@ -1,8 +1,8 @@
 @extends('layouts.mainlayout')
-
+@section('title', 'Sign In')
 @section('content')
 
-    <div class="container mt-5 pt-5">
+    <div class="container">
         <h1>Sign In</h1>
         {!! Form::open(['url'=>'/auth/signin','method'=>'POST']) !!}
             <div class="form-group">

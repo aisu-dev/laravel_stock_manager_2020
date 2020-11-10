@@ -1,8 +1,7 @@
 @extends('layouts.mainlayout')
-
+@section('title', 'Sign up')
 @section('content')
-
-    <div class="container mt-5 pt-5">
+    <div class="container">
         <h1>Sign Up</h1>
         {!! Form::open(['url'=>'/auth/signup']) !!}
             <div class="form-group">
