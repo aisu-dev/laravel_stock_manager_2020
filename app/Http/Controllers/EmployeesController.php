@@ -103,7 +103,7 @@ class EmployeesController extends Controller
         if(!$resp){
             employees::create([
                 'emp_name'=>'admin',
-                'emp_password'=>'test',
+                    'emp_password'=>'test',
                 'emp_address'=>'abc',
                 'emp_phone'=>'0000000000',
                 'emp_dob'=> new DateTime(),
