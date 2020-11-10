@@ -10,6 +10,10 @@
             {!! Form::text('uname', $data->emp_name, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
+            {!! Form::label('upassword', 'Password:', ['class'=>'']) !!}
+            {!! Form::text('upassword', $data->emp_password, ['class'=>'form-control']) !!}
+        </div>
+        <div class="form-group">
             {!! Form::label('address', 'Address:', ['class'=>'']) !!}
             {!! Form::text('address', $data->emp_address, ['class'=>'form-control']) !!}
         </div>

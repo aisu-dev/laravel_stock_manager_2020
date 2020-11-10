@@ -119,12 +119,14 @@ class EmployeesController extends Controller
     public function emp_store(Request $request){
         $request->validate([
             'uname'=>'required',
+            'upassword'=>'required',
             'address'=>'required',
             'phone'=>'required',
             'dob'=>'required'
         ]);
         $acc = employees::find($request->id);
         $acc->emp_name = $request->uname;
+        $acc->emp_password = $request->upassword;
         $acc->emp_address = $request->address;
         $acc->emp_phone = $request->phone;
         $acc->emp_dob = $request->dob;
@@ -136,12 +138,14 @@ class EmployeesController extends Controller
     public function admin_store(Request $request){
         $request->validate([
             'uname'=>'required',
+            'upassword'=>'required',
             'address'=>'required',
             'phone'=>'required',
             'dob'=>'required'
         ]);
         $acc = employees::find($request->id);
         $acc->emp_name = $request->uname;
+        $acc->emp_password = $request->upassword;
         $acc->emp_address = $request->address;
         $acc->emp_phone = $request->phone;
         $acc->pos_id = $request->pos;
