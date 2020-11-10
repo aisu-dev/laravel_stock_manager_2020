@@ -88,7 +88,7 @@ class EmployeesController extends Controller
             'emp_dob'=> $request->dob,
             'pos_id'=>2,
         ]);
-        return redirect('/');
+        return redirect()->to('/')->send()->with('alert', 'Account save successfully!');
     }
 
 // TODO: signout from account.
@@ -131,7 +131,7 @@ class EmployeesController extends Controller
         $acc->emp_phone = $request->phone;
         $acc->emp_dob = $request->dob;
         $acc->save();
-        return redirect('/');
+        return redirect()->to('/emp/edit/')->send()->with('alert', 'Account save successfully!');
     }
 
 // TODO: update employee account.
@@ -151,7 +151,7 @@ class EmployeesController extends Controller
         $acc->pos_id = $request->pos;
         $acc->emp_dob = $request->dob;
         $acc->save();
-        return redirect('/admin/manage_emp');
+        return redirect()->to('/admin/manage_emp')->send()->with('alert', 'Account save successfully!');
     }
 
     public function admin_delete(Request $request,$id){
@@ -160,7 +160,7 @@ class EmployeesController extends Controller
             if($acc->pos_id==1){
                 $acc = employees::find($id);
                 $acc->delete();
-                return redirect('/admin/manage_emp');
+                return redirect('/admin/manage_emp')->send()->with('alert', 'Account delete successfully!');
             }
         }
         return redirect('/');

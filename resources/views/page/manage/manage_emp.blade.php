@@ -6,6 +6,7 @@
         <div class="form-group">
             <a href="/signup"><button class="btn btn-primary form-control">SINGUP</button></a>
         </div>
+        
         <table class="table">
             <thead class="thead-dark">
                 <tr>

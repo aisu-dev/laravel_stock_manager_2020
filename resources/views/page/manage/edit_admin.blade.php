@@ -1,6 +1,7 @@
 @extends('layouts.mainlayout')
 @section('title', 'Edit Account')
 @section('content')
+
     <div class="container">
         <h1>Edit account</h1>
         {!! Form::open( ['url'=>'/admin/edit/store','method'=>'post']) !!}
