@@ -17,7 +17,7 @@
                 {!!Form::select('type', ['1' => 'Furniture','2' => 'Clothing', '3' => 'Technology'])!!}</br>
 
                 <strong>{!!Form::label('Product description: ')!!}</strong></br>
-                {!!Form::textarea('pdes',null,['style' => 'resize:none'])!!}</br>
+                {!!Form::textarea('pdes',null,['style' => 'resize:none'])!!}</br></br>
 
                 <strong>{!!Form::label('Product price: ')!!}</strong>
                 {!!Form::text('pprice')!!}
